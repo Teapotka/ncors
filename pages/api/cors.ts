@@ -1,4 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import NextCors from 'nextjs-cors'
+/*
 import Cors from 'cors'
 
 // Initializing the cors middleware
@@ -26,12 +28,15 @@ function runMiddleware(
   })
 }
 
+*/
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   // Run the middleware
-  await runMiddleware(req, res, cors)
+  await NextCors(req, res, {
+    origin: '*'
+  })
 
   // Rest of the API logic
   res.json({ message: 'Hello Everyone!' })
